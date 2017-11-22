@@ -1,0 +1,27 @@
+{
+  "name": "mango-api",
+  "version": "1.0.0",
+  "description": "Proyecto de API RESTful con Node, MOnog y Express",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jcarbad/mango-api.git"
+  },
+  "author": "jcarbad",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jcarbad/mango-api/issues"
+  },
+  "homepage": "https://github.com/jcarbad/mango-api#readme",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2"
+  },
+  "devDependencies": {
+    "nodemon": "^1.12.1"
+  }
+}
