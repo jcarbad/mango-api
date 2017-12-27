@@ -10,7 +10,6 @@ api.get('/product', ProductCtrl.getProducts);
 
 //POST: un nuevo producto
 api.post('/product', auth.isAuth,ProductCtrl.createProduct);
-
 //GET: un producto especifico
 api.get('/product/:productId', ProductCtrl.getProduct);
 
