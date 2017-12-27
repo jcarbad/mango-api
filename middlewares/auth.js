@@ -3,6 +3,10 @@ const jqwt = require('jwt-simple'),
 	  moment = require('moment'),
 	  config = require('../config');
 
+/**
+	Realiza la validacion mediante JW token. Verifica si hay autorizacion (token valido)
+	y expiracion del token.
+*/
 const isAuth = (req, res, next) => {
 	if (!req.headers.authorization) {
 		return res.status(403).send({
