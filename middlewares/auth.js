@@ -1,7 +1,5 @@
 /* jslint esversion:6 */
-const jqwt = require('jwt-simple'),
-	  moment = require('moment'),
-	  config = require('../config');
+const services = require('../services');
 
 /**
 	Realiza la validacion mediante JW token. Verifica si hay autorizacion (token valido)
@@ -14,17 +12,14 @@ const isAuth = (req, res, next) => {
 		});
 	}
 
-	const tokem = req.headers.authorization.split(" ")[1],
-		  payload = jwt.decode(token, config.SECRET_TOKEN);
+	const token = req.headers.authorization.split(' ')[1];
 
-	if (payload.exp <= moment().unix()) {
-		return res.status(401).send({
-			message: 'EL token ha expirado'
-		});
-	}
-
-	req.user = payload.sub;
-	next();
+	services.decodeToken(token)
+		.then(response => {
+			req.user = response;
+			next();
+		})
+		.catch(response => res.status(response.status));
 };
 
 module.exports = { isAuth };

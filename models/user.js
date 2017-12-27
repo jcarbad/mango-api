@@ -12,16 +12,17 @@ const mongoose = require('mongoose'),
 	  	avatar: String,
 	  	password: {
 	  		type: String,
-	  		select: false
+	  		// select: false
 	  	},
 	  	signupDate: {
 	  		type: Date,
-	  		default: Dste.now()
+	  		default: Date.now()
 	  	},
 	  	lastLogin: Date
 	  });
 
-UserSchema.pre('save', next => {
+// Si se hace con arrow fn falla, por el "this" diferente en =>
+UserSchema.pre('save', function (next) {
 	let user = this;
 	if (!user.isModified('password'))
 		return next();
